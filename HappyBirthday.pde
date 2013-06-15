@@ -53,15 +53,21 @@ boolean checkTime = false;
 int time = 0;
 int timout = 2000;
 
+PImage cake;
+
 
 // -----------------------------
 // SETUP
 // -----------------------------
 
 void setup() {
+  // Draw
   size(displayWidth, displayHeight, P2D);
   orientation(PORTRAIT);
   background(col);
+  
+  // Image
+  cake = loadImage("cake.png");
   
   // Text Field
   widgetContainer = new APWidgetContainer(this); 
@@ -173,6 +179,7 @@ void draw() {
   else if(screen == 2) {
     widgetContainer.hide();
     text("It's  Your Birthday!!!", 100, 100);
+    image(cake, 100, height /2, 3*(width/4), 3*(width/4));
   }
   
 }
