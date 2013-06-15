@@ -6,18 +6,18 @@
 void saveDate() {
 
   // Store data
-  data[0] = dayField.getText();
-  data[1] = monthField.getText();
-  data[2] = yearField.getText();
+  saveData[0] = dayField.getText();
+  saveData[1] = monthField.getText();
+  saveData[2] = yearField.getText();
   
   // Write Data
   try {
     BufferedWriter writer = new BufferedWriter(new FileWriter("//sdcard//HappyBirthday//birthday.txt", false));
-    writer.write(data[0]);
+    writer.write(saveData[0]);
     writer.write("\n");
-    writer.write(data[1]);
+    writer.write(saveData[1]);
     writer.write("\n");
-    writer.write(data[2]);
+    writer.write(saveData[2]);
     writer.write("\n");
     writer.flush();
     writer.close();
