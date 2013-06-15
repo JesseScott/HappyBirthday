@@ -4,7 +4,15 @@
 // IMPORTS
 // -----------------------------
 
+import android.content.Context;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Environment;
 import apwidgets.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 // -----------------------------
 // DECLARATIONS
@@ -26,6 +34,7 @@ String debug = "";
 
 String[] data = new String[3];
 String[] lines;
+String dirName;
 
 int buttonAlignment = 500;
 int dayHeight = 300;
@@ -68,6 +77,24 @@ void setup() {
   fontList = PFont.list();
   font = createFont(fontList[4], 40, true);
   textFont(font);
+  
+  // Directory
+  try{
+    dirName = "//sdcard//HappyBirthday";
+    File newFile = new File(dirName);
+    newFile.mkdirs();
+    if(newFile.exists()) {
+      println("Directory Exists...");
+      if(newFile.isDirectory()) {
+        println("isDirectory = true...");
+      } else println("isDirectory = false...");
+    } else {
+      println("Directory Doesn't Exist...");
+    }
+  }
+  catch(Exception e) {
+
+  }
   
   // File
   try {
@@ -131,5 +158,21 @@ void draw() {
     widgetContainer.hide();
     text("It's  Your Birthday!!!", 100, 100);
   }
+  
+}
+
+// -----------------------------
+// LIFECYCLE
+// -----------------------------
+
+@Override
+void onResume() {
+  super.onResume();
+
+}
+
+@Override
+void onPause() {
+  super.onPause();
   
 }
