@@ -101,10 +101,15 @@ void setup() {
     File file = new File(path);
     readData = loadStrings(file);
     println("There are " + readData.length + " lines in the file");
+    for(int i = 0; i < readData.length; i++) {
+      println(readData[i]); 
+    }
     if(readData.length == 3) {
+      println("setting entered to true");
       enteredBirthday = true; 
     }
     else {
+      println("setting entered to false");
       enteredBirthday = false;
     }
   }
@@ -116,9 +121,11 @@ void setup() {
   
   // Screen
   if(enteredBirthday) {
-    screen = 1;
+    println("weve entered, now lets check the date");
+    screen = checkDate();
   }
   else {
+    println("you need to enter your date");
     screen = 0;
   }
   
@@ -152,14 +159,15 @@ void draw() {
     // Timer
     if(checkTime) {
       if(runTimeout()) {
-        screen = 1; 
+        println("Checking Date...");
+        screen = checkDate();
       }
     }
   }
   // Not Yet
   else if(screen == 1) {
     widgetContainer.hide();
-    text("It's Not Your Birthday Just Yet..", 100, 100);
+    text("It's Not Your Birthday \nJust Yet... :-(", 100, height/2);
   }
   // Yes !!
   else if(screen == 2) {
