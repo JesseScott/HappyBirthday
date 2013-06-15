@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import apwidgets.*;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -32,8 +33,8 @@ String birthDay = "";
 String birthYear = "";
 String debug = "";
 
-String[] data = new String[3];
-String[] lines;
+String[] saveData = new String[3];
+String[] readData;
 String dirName;
 
 int buttonAlignment = 500;
@@ -82,26 +83,29 @@ void setup() {
   try{
     dirName = "//sdcard//HappyBirthday";
     File newFile = new File(dirName);
-    newFile.mkdirs();
-    if(newFile.exists()) {
-      println("Directory Exists...");
-      if(newFile.isDirectory()) {
-        println("isDirectory = true...");
-      } else println("isDirectory = false...");
-    } else {
-      println("Directory Doesn't Exist...");
+    if(newFile.exists() == false) {
+      //println("Creating directory");
+      newFile.mkdirs();
+    } 
+    else {
+      //println("Directory already exists");
     }
   }
   catch(Exception e) {
-
+    e.printStackTrace();
   }
   
   // File
   try {
-    lines = loadStrings("birthday.txt");
-    println("There are " + lines.length + " lines.");
-    if(lines.length == 3) {
+    String path = "//sdcard//HappyBirthday//birthday.txt";
+    File file = new File(path);
+    readData = loadStrings(file);
+    println("There are " + readData.length + " lines in the file");
+    if(readData.length == 3) {
       enteredBirthday = true; 
+    }
+    else {
+      enteredBirthday = false;
     }
   }
   catch(Exception e) {
@@ -112,11 +116,15 @@ void setup() {
   
   // Screen
   if(enteredBirthday) {
-    screen = 0;
-  }
-  else {
     screen = 1;
   }
+  else {
+    screen = 0;
+  }
+  
+  println("----");
+  println("-- HappyBirthday --");
+  println("----");
   
 }
 
