@@ -7,8 +7,12 @@
 import android.content.Context;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.view.Window;
 import android.os.Environment;
+
 import apwidgets.*;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -59,6 +63,12 @@ PImage cake;
 // -----------------------------
 // SETUP
 // -----------------------------
+
+@Override
+public void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+
+}
 
 void setup() {
   // Draw
