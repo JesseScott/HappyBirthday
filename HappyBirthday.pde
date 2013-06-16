@@ -57,12 +57,11 @@ boolean checkTime = false;
 int time = 0;
 int timout = 2000;
 
+ParticleSystem[] ps = new ParticleSystem[5]; //ps1. ps2, ps3, ps4, ps5;
+PImage sprite;
+
 PImage cake;
-PVector candle1 = new PVector(200, 695);
-PVector candle2 = new PVector(295, 735);
-PVector candle3 = new PVector(345, 650);
-PVector candle4 = new PVector(420, 730);
-PVector candle5 = new PVector(485, 700);
+PVector[] candle = new PVector[5];
 
 
 // -----------------------------
@@ -74,9 +73,25 @@ void setup() {
   size(displayWidth, displayHeight, P2D);
   orientation(PORTRAIT);
   background(col);
+  //println(height); // 1184
   
   // Image
   cake = loadImage("cake.png");
+  
+  // Candles
+  candle[0] = new PVector(200, 695);
+  candle[1] = new PVector(295, 735);
+  candle[2] = new PVector(345, 650);
+  candle[3] = new PVector(420, 730);
+  candle[4] = new PVector(485, 700);
+  
+  // Particles
+  sprite = loadImage("sprite.png");
+  for(int i = 0; i < 5; i++) {
+    ps[i] = new ParticleSystem(200);  
+  }
+  //ps = new ParticleSystem(200);
+  hint(DISABLE_DEPTH_MASK);
   
   // Text Field
   widgetContainer = new APWidgetContainer(this); 
@@ -181,16 +196,30 @@ void draw() {
   }
   // Not Yet
   else if(screen == 1) {
+    // Buttons
     widgetContainer.hide();
+    
+    // Text
     text("It's Not Your Birthday \nJust Yet... :-(", 100, height/2);
   }
   // Yes !!
   else if(screen == 2) {
+    // Buttons
     widgetContainer.hide();
+    
+    // Text
     text("It's  Your Birthday!!!", 100, 100);
+    
+    // Image
     image(cake, 100, height /2, 3*(width/4), 3*(width/4));
-    fill(0);
-    ellipse(485, 700, 20, 20);
+
+    // Fireworks
+    for(int i = 0; i < 5; i++) {
+      ps[i].update();
+      ps[i].display();
+      ps[i].setEmitter(candle[i].x, candle[i].y);  
+    }
+
   }
   
 }
