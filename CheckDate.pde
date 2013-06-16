@@ -9,15 +9,15 @@ int checkDate() {
   boolean month = false;
   
   // Check Day
-  println("The Day is " + day() + " and the date is " + int(readData[0]));
-  if(day() == int(readData[0]) ) {
+  println("The Day is " + day() + " and the date is " + birthDay);
+  if(day() == birthDay ) {
     day = true;
     println("Matching Day");
   } 
 
   // Check Month
-  println("The Month is " + month() + " and the date is " + int(readData[1]));
-  if(month() == int(readData[1]) ) {
+  println("The Month is " + month() + " and the date is " + birthMonth);
+  if(month() == birthMonth ) {
     month = true;
     println("Matching Month");
   }   
