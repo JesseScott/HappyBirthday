@@ -88,9 +88,8 @@ void setup() {
   // Particles
   sprite = loadImage("sprite.png");
   for(int i = 0; i < 5; i++) {
-    ps[i] = new ParticleSystem(200);  
+    ps[i] = new ParticleSystem(400);  
   }
-  //ps = new ParticleSystem(200);
   hint(DISABLE_DEPTH_MASK);
   
   // Text Field
@@ -208,7 +207,8 @@ void draw() {
     widgetContainer.hide();
     
     // Text
-    text("It's  Your Birthday!!!", 100, 100);
+    textSize(60);
+    text("Happy Birthday!!!", 150, height/3);
     
     // Image
     image(cake, 100, height /2, 3*(width/4), 3*(width/4));
@@ -221,7 +221,7 @@ void draw() {
     }
 
   }
-  
+    
 }
 
 // -----------------------------
