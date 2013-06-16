@@ -58,17 +58,16 @@ int time = 0;
 int timout = 2000;
 
 PImage cake;
+PVector candle1 = new PVector(200, 695);
+PVector candle2 = new PVector(295, 735);
+PVector candle3 = new PVector(345, 650);
+PVector candle4 = new PVector(420, 730);
+PVector candle5 = new PVector(485, 700);
 
 
 // -----------------------------
 // SETUP
 // -----------------------------
-
-@Override
-public void onCreate(Bundle savedInstanceState) {
-  super.onCreate(savedInstanceState);
-
-}
 
 void setup() {
   // Draw
@@ -190,6 +189,8 @@ void draw() {
     widgetContainer.hide();
     text("It's  Your Birthday!!!", 100, 100);
     image(cake, 100, height /2, 3*(width/4), 3*(width/4));
+    fill(0);
+    ellipse(485, 700, 20, 20);
   }
   
 }
