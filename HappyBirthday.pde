@@ -55,9 +55,9 @@ color col = color(255, 0, 0);
 
 boolean checkTime = false;
 int time = 0;
-int timout = 2000;
+int timeout = 2000;
 
-ParticleSystem[] ps = new ParticleSystem[5]; //ps1. ps2, ps3, ps4, ps5;
+ParticleSystem[] ps = new ParticleSystem[5]; //ps1, ps2, ps3, ps4, ps5;
 PImage sprite;
 
 PImage cake;
